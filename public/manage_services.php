@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 require_once '../config/db.php';
 
-// Handle Add
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add'])) {
     $stmt->execute();
 }
 
-// Handle Delete
+
 if (isset($_GET['delete'])) {
     $stmt = $conn->prepare("DELETE FROM Service WHERE id = ?");
     $stmt->bind_param("i", $_GET['delete']);
@@ -24,7 +24,7 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Handle Update
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $stmt = $conn->prepare("UPDATE Service SET title = ?, description = ? WHERE id = ?");
     $stmt->bind_param("ssi", $_POST['title'], $_POST['description'], $_POST['id']);
@@ -48,62 +48,16 @@ $services = $conn->query("SELECT * FROM Service ORDER BY id DESC");
 <head>
     <meta charset="UTF-8">
     <title>Manage Services - SidrahTech</title>
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0d1b2a;
-            color: #f0f4f8;
-            display: flex;
-            min-height: 100vh;
-        }
-        .sidebar {
-            width: 220px;
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(173,216,255,0.2);
-            padding: 25px 15px;
-        }
-        .sidebar h2 { font-size: 1.1rem; color: #cfe2ff; margin-top: 0; }
-        .sidebar a {
-            display: block; color: rgba(255,255,255,0.85); text-decoration: none;
-            padding: 10px 12px; border-radius: 8px; margin-bottom: 6px; font-size: 0.9rem;
-        }
-        .sidebar a:hover { background: rgba(255,255,255,0.1); }
-        .main-content { flex: 1; padding: 40px; }
-        .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(173,216,255,0.25);
-            border-radius: 14px;
-            padding: 25px 30px;
-            margin-bottom: 25px;
-        }
-        input, textarea {
-            width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px;
-            border-radius: 6px; border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.08); color: white; box-sizing: border-box;
-        }
-        button {
-            background: rgba(52,120,246,0.4); color: white;
-            border: 1px solid rgba(173,216,255,0.4); padding: 8px 18px;
-            border-radius: 6px; cursor: pointer;
-        }
-        button:hover { background: rgba(52,120,246,0.6); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        a.action { color: #a8c6ff; text-decoration: none; margin-right: 10px; font-size: 0.85rem; }
-        a.action.delete { color: #ff8080; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="admin-page">
     <div class="sidebar">
         <h2>SidrahTech</h2>
         <a href="dashboard.php">Dashboard Home</a>
         <a href="manage_services.php">Manage Services</a>
         <a href="manage_jobs.php">Manage Jobs</a>
         <a href="messages.php">Messages</a>
+        <a href="applications.php">Applications</a>
         <?php if ($_SESSION['role'] === 'Admin'): ?>
             <a href="manage_users.php">Manage Users</a>
         <?php endif; ?>

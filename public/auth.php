@@ -14,7 +14,7 @@ if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
 
     if (password_verify($password, $user['password'])) {
-        // Correct password — start the session
+
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['role'] = $user['role'];
@@ -24,7 +24,7 @@ if ($result->num_rows === 1) {
     }
 }
 
-// If we reach here, login failed
+
 header("Location: login.php?error=1");
 exit();
 ?>
