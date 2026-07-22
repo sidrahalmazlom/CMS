@@ -1,0 +1,493 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d1b2a;
+    color: #f0f4f8;
+}
+
+/* ==========================================================================
+   Public site layout (index, services, careers)
+   ========================================================================== */
+
+body.public-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: rgba(30, 60, 114, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.header-logo {
+    height: 40px;
+    width: auto;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+main {
+    flex: 1;
+    padding: 70px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+/* Hero (index.php only) */
+.hero {
+    position: relative;
+    height: 80vh;
+    background-image: url('images/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-caption {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(13, 27, 42, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px 30px;
+    max-width: 400px;
+}
+
+.hero-caption h2 {
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+}
+
+.hero-caption p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Sections (index.php) */
+section {
+    padding: 70px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+/* Glass cards (shared: index, services, careers) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.glass-card h3 {
+    margin-top: 0;
+    color: #a8c6ff;
+}
+
+.glass-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+.note {
+    text-align: center;
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* "View more" button (index.php) */
+.view-more-wrap {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-more-btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.view-more-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Footer + contact form (index.php) */
+footer {
+    background: rgba(30, 60, 114, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 25px 30px;
+    text-align: center;
+}
+
+/* Simpler footer variant used on services.php / careers.php */
+footer.simple {
+    padding: 20px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-toggle {
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#contactForm {
+    display: none;
+    max-width: 400px;
+    margin: 20px auto 0 auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+}
+
+#contactForm.show {
+    display: block;
+}
+
+#contactForm label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#contactForm button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#contactForm button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   Admin dashboard layout (dashboard, manage_jobs, manage_services,
+   manage_users, messages)
+   ========================================================================== */
+
+body.admin-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(173, 216, 255, 0.2);
+    padding: 25px 15px;
+}
+
+.sidebar h2 {
+    font-size: 1.1rem;
+    color: #cfe2ff;
+    margin-top: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(173, 216, 255, 0.25);
+    border-radius: 14px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+}
+
+/* Messages page uses a tighter card variant */
+.card.message-card {
+    padding: 20px 25px;
+    margin-bottom: 15px;
+}
+
+.card small {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    box-sizing: border-box;
+}
+
+button {
+    background: rgba(52, 120, 246, 0.4);
+    color: white;
+    border: 1px solid rgba(173, 216, 255, 0.4);
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(52, 120, 246, 0.6);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+a.action {
+    color: #a8c6ff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.85rem;
+}
+
+a.action.delete {
+    color: #ff8080;
+}
+
+/* manage_users.php only has one action link (no margin needed) and it's always red */
+.users-page a.action {
+    color: #ff8080;
+    margin-right: 0;
+}
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(173, 216, 255, 0.25);
+    border-radius: 14px;
+    padding: 25px 30px;
+    max-width: 500px;
+}
+
+.role-tag {
+    display: inline-block;
+    background: rgba(52, 120, 246, 0.3);
+    border: 1px solid rgba(173, 216, 255, 0.4);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.logout {
+    margin-top: 30px;
+    color: #ff8080;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Login page
+   ========================================================================== */
+
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(173, 216, 255, 0.25);
+    border-radius: 14px;
+    padding: 40px;
+    width: 320px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.brand-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.brand-logo {
+    height: 100px;
+    width: auto;
+    padding: 12px;
+}
+
+.brand-name {
+    margin: 12px 0 0 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f7f7f7;
+    letter-spacing: 0.5px;
+}
+
+.login-card h3 {
+    text-align: center;
+    margin-top: 0;
+    color: #eeeeee;
+}
+
+.login-card label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.login-card input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.login-card button {
+    width: 100%;
+    background: rgba(52, 120, 246, 0.4);
+    color: white;
+    border: 1px solid rgba(173, 216, 255, 0.4);
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login-card button:hover {
+    background: rgba(52, 120, 246, 0.6);
+}
+
+.error {
+    color: #ff8080;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 10px;
+}

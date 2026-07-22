@@ -13,72 +13,9 @@ $name = $_SESSION['name'];
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - SidrahTech</title>
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0d1b2a;
-            color: #f0f4f8;
-            display: flex;
-            min-height: 100vh;
-        }
-        .sidebar {
-            width: 220px;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(173, 216, 255, 0.2);
-            padding: 25px 15px;
-        }
-        .sidebar h2 {
-            font-size: 1.1rem;
-            color: #cfe2ff;
-            margin-top: 0;
-        }
-        .sidebar a {
-            display: block;
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 8px;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-        }
-        .sidebar a:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        .main-content {
-            flex: 1;
-            padding: 40px;
-        }
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(173, 216, 255, 0.25);
-            border-radius: 14px;
-            padding: 25px 30px;
-            max-width: 500px;
-        }
-        .role-tag {
-            display: inline-block;
-            background: rgba(52, 120, 246, 0.3);
-            border: 1px solid rgba(173, 216, 255, 0.4);
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 8px;
-        }
-        .logout {
-            margin-top: 30px;
-            color: #ff8080;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="admin-page">
 
     <div class="sidebar">
         <h2>SidrahTech</h2>
