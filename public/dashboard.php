@@ -17,20 +17,7 @@ $name = $_SESSION['name'];
 </head>
 <body class="admin-page">
 
-    <div class="sidebar">
-        <h2>SidrahTech</h2>
-
-        <a href="dashboard.php">Dashboard Home</a>
-        <a href="manage_services.php">Manage Services</a>
-        <a href="manage_jobs.php">Manage Jobs</a>
-        <a href="messages.php">Messages</a>
-        <a href="applications.php">Applications</a>
-        <?php if ($role === 'Admin'): ?>
-            <a href="manage_users.php">Manage Users</a>
-        <?php endif; ?>
-
-        <a href="logout.php" class="logout">Log Out</a>
-    </div>
+   <?php require_once 'includes/sidebar.php'; ?>
 
     <div class="main-content">
         <div class="welcome-card">

@@ -7,19 +7,14 @@
 </head>
 <body class="public-page">
 
-    <header>
-        <nav>
-            <a href="index.html#home">Home</a>
-            <a href="index.html#about">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="careers.html">Careers</a>
-        </nav>
-        <img src="images/logo.png" alt="SidrahTech Logo" class="header-logo">
-    </header>
+<?php
+$pageTitle = "Careers";
+$basePrefix = "index.php";
+require_once 'includes/header.php';
+require_once '../config/db.php';
+?>
 
     <main>
-       <?php require_once '../config/db.php'; ?>
-
 <h2>Open Positions</h2>
 <div class="card-grid">
     <?php
@@ -58,10 +53,7 @@ while ($row = $jobs->fetch_assoc()):
 <?php endwhile; ?>
 </div>
     </main>
-
-    <footer class="simple">
-        <p>&copy; 2026 SidrahTech. All rights reserved.</p>
-    </footer>
+<?php require_once 'includes/footer.php'; ?>
 
 </body>
 </html>

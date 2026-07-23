@@ -26,13 +26,10 @@ $applications = $conn->query("
 <head>
     <meta charset="UTF-8">
     <title>Applications - SidrahTech</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         * { box-sizing: border-box; }
         body { margin: 0; font-family: Arial, sans-serif; background-color: #0d1b2a; color: #f0f4f8; display: flex; min-height: 100vh; }
-        .sidebar { width: 220px; background: rgba(255,255,255,0.06); backdrop-filter: blur(10px); border-right: 1px solid rgba(173,216,255,0.2); padding: 25px 15px; }
-        .sidebar h2 { font-size: 1.1rem; color: #cfe2ff; margin-top: 0; }
-        .sidebar a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; padding: 10px 12px; border-radius: 8px; margin-bottom: 6px; font-size: 0.9rem; }
-        .sidebar a:hover { background: rgba(255,255,255,0.1); }
         .main-content { flex: 1; padding: 40px; }
         .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(173,216,255,0.25); border-radius: 14px; padding: 20px 25px; margin-bottom: 15px; }
         .card small { color: rgba(255,255,255,0.5); }
@@ -41,18 +38,7 @@ $applications = $conn->query("
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>SidrahTech</h2>
-        <a href="dashboard.php">Dashboard Home</a>
-        <a href="manage_services.php">Manage Services</a>
-        <a href="manage_jobs.php">Manage Jobs</a>
-        <a href="applications.php">Applications</a>
-        <a href="messages.php">Messages</a>
-        <?php if ($_SESSION['role'] === 'Admin'): ?>
-            <a href="manage_users.php">Manage Users</a>
-        <?php endif; ?>
-        <a href="logout.php" style="color:#ff8080;">Log Out</a>
-    </div>
+    <?php require_once 'includes/sidebar.php'; ?>
 
     <div class="main-content">
         <h2>Job Applications</h2>

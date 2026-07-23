@@ -46,19 +46,7 @@ $jobs = $conn->query("SELECT * FROM Job ORDER BY id DESC");
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="admin-page">
-    <div class="sidebar">
-        <h2>SidrahTech</h2>
-        <a href="dashboard.php">Dashboard Home</a>
-        <a href="manage_services.php">Manage Services</a>
-        <a href="manage_jobs.php">Manage Jobs</a>
-        <a href="messages.php">Messages</a>
-        <a href="applications.php">Applications</a>
-        <?php if ($_SESSION['role'] === 'Admin'): ?>
-            <a href="manage_users.php">Manage Users</a>
-        <?php endif; ?>
-        <a href="logout.php" style="color:#ff8080;">Log Out</a>
-    </div>
-
+    <?php require_once 'includes/sidebar.php'; ?>
     <div class="main-content">
         <div class="card">
             <h2><?php echo $editRow ? "Edit Job" : "Add New Job"; ?></h2>

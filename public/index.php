@@ -6,17 +6,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#careers">Careers</a>
-    </nav>
-    <img src="images/logo.png" alt="SidrahTech Logo" class="header-logo">
-</header>
-
+<?php
+$pageTitle = "Home";
+$basePrefix = "";
+require_once 'includes/header.php';
+require_once '../config/db.php';
+?>
     <section id="home" style="padding:0; max-width:none;">
         <div class="hero">
             <div class="hero-caption">
